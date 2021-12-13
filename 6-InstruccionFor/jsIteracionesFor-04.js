@@ -1,7 +1,3 @@
-function mostrar()
-{
-	alert("ok");
-
-
-
-}//FIN DE LA FUNCIÓN
+function mostrar() {
+  alert('ok')
+} //FIN DE LA FUNCIÓN
