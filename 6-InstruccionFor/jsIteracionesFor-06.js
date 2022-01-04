@@ -3,8 +3,8 @@ function mostrar() {
   let num = []
   let valor = parseInt(prompt('Ingrese número:'))
   for (let i = 1; i <= valor; i++) {
-    num.push(i)
     if (i % 2 == 0) {
+      num.push(i)
       contador = contador + 1
     }
   }
