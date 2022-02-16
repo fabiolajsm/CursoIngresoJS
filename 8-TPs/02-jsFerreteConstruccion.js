@@ -5,18 +5,17 @@ C.	Para hacer un contrapiso de 1m x 1m se necesitan 2 bolsas de cemento y 3 de c
 */
 
 function Rectangulo() {
-  const largo = txtIdLargo.value
-  const ancho = txtIdAncho.value
-  const terreno = largo * ancho
-  alert(terreno * 3)
+  let largo = txtIdLargo.value;
+  let ancho = txtIdAncho.value;
+  let terreno = largo * ancho;
+  alert(terreno * 3);
 }
 function Circulo() {
-  const radio = txtIdRadio.value * 2
-  alert(radio * 3)
+  const radio = txtIdRadio.value * 2;
+  alert(radio * 3);
 }
 function Materiales() {
-  const largo = txtIdLargo.value
-  const ancho = txtIdAncho.value
-  let altura = 1 // m
-  let ancho = 1 // m
+  const largo = txtIdLargo.value;
+  const ancho = txtIdAncho.value;
+  
 }

@@ -5,24 +5,24 @@ C.	ingresar tres precios de productos  y mostrar precio final (más IVA 21%).
 */
 
 function Sumar(total) {
-  const p1 = parseInt(txtIdPrecioUno.value)
-  const p2 = parseInt(txtIdPrecioDos.value)
-  const p3 = parseInt(txtIdPrecioTres.value)
-  const sum = p1 + p2 + p3
+  const precioUno = parseInt(txtIdPrecioUno.value);
+  const precioDos = parseInt(txtIdPrecioDos.value);
+  const precioTres = parseInt(txtIdPrecioTres.value);
+  const suma = precioUno + precioDos + precioTres;
 
   if (total !== true) {
-    alert(sum)
+    alert(suma);
   } else {
-    return sum
+    return suma;
   }
 }
 
 function Promedio() {
-  let suma = Sumar(true)
-  alert(suma / 3)
+  let suma = Sumar(true);
+  alert(suma / 3);
 }
 
 function PrecioFinal() {
-  let suma = Sumar(true)
-  alert(suma + suma * 0.21)
+  let suma = Sumar(true);
+  alert(suma + suma * 0.21);
 }
