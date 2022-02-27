@@ -22,7 +22,6 @@ function mostrar() {
   let edadSolteros = 0;
   let promedioEdadSolteros = 0;
 
-
   do {
     nombre = prompt("Ingrese su nombre:");
     edad = prompt("Ingrese su edad:");
@@ -84,17 +83,13 @@ function mostrar() {
     // a) El nombre de la persona con más temperatura.
     if (mayorTemperatura < temperaturaCorporal) {
       mayorTemperatura = temperaturaCorporal;
-      personaConMayorTemperatura =
-        nombre +
-        " es la persona con más temperatura, teniendo " +
-        temperaturaCorporal +
-        " grados";
+      personaConMayorTemperatura = nombre;
     }
     // b) Cuantos mayores de edad estan viudos.
     if (edad > 17 && estadoCivil === "viudo") {
       mayoresDeEdadViudos = mayoresDeEdadViudos + 1;
     }
-    // c) La cantidad de hombres que hay solteros o viudos
+    // c) La cantidad de hombres que hay solteros o viudos.
     if (
       ((sexo === "m" || sexo === "M") && estadoCivil === "viudo") ||
       estadoCivil === "soltero"
@@ -112,4 +107,17 @@ function mostrar() {
       promedioEdadSolteros = edadSolteros / solteros;
     }
   } while (siguientePasajero == "si");
+  // Mostrar
+  document.write(
+    " a) El nombre de la persona con más temperatura es : " +
+      personaConMayorTemperatura +
+      "<br> b) La cantidad de mayores de edad viudos es: " +
+      mayoresDeEdadViudos +
+      "<br> c) La cantidad de hombres que hay solteros o viudos es: " +
+      cantidadHombresSolterosYViudos +
+      "<br> d) Cantidad de personas de la tercera edad (más de 60 años) que tienen más de 38 de temperatura: " +
+      mayoresDeEdadConMasTemperatura +
+      "<br> e) El promedio de edad entre los hombres solteros es:  " +
+      promedioEdadSolteros
+  );
 }
