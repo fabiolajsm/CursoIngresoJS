@@ -15,6 +15,11 @@ function mostrar() {
   let tipoConMasCantidad;
   let tipoMasCaro;
 
+  //
+  let precioArena = 0;
+  let precioCal = 0;
+  let precioCemento = 0;
+
   seguirComprando = "si";
   totalAPagar = 0;
   importeAPagar = 0;
@@ -71,28 +76,21 @@ function mostrar() {
     if (cantidadDeBolsas < 11) {
       importeConDescuento += importeAPagar;
     }
-    // c) Informar el tipo con mas cantidad de bolsas.
-    //d) El tipo mas caro
     switch (tipoValidad) {
       case "arena":
         cantidadArena += cantidadDeBolsas;
-        if (precioPorBolsa > tipoMasCaro) {
-          tipoMasCaro = "arena";
-        }
+        precioArena += precioPorBolsa;
         break;
       case "cal":
         cantidadCal += cantidadDeBolsas;
-        if (precioPorBolsa > tipoMasCaro) {
-          tipoMasCaro = "cal";
-        }
+        precioCal += precioPorBolsa;
         break;
       case "cemento":
         cantidadCemento += cantidadDeBolsas;
-        if (precioPorBolsa > tipoMasCaro) {
-          tipoMasCaro = "cemento";
-        }
+        precioCemento += precioPorBolsa;
         break;
     }
+    // c) Informar el tipo con mas cantidad de bolsas.
     if (cantidadArena > cantidadCal && cantidadArena > cantidadCemento) {
       tipoConMasCantidad = "Arena";
     }
@@ -102,6 +100,17 @@ function mostrar() {
     if (cantidadCemento > cantidadArena && cantidadCemento > cantidadCal) {
       tipoConMasCantidad = "Cemento";
     }
+    // d) El tipo mas caro
+    if (precioArena > precioCal && precioArena > precioCemento) {
+      tipoMasCaro = "Arena";
+    }
+    if (precioCal > precioArena && precioCal > precioCemento) {
+      tipoMasCaro = "Cal";
+    }
+    if (precioCemento > precioArena && precioCemento > cantidadCal) {
+      tipoMasCaro = "Cemento";
+    }
+
     totalAPagar += importeAPagar;
     importeAPagar = 0;
     cantidadDeBolsas = 0;
