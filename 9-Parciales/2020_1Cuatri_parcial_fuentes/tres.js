@@ -1,12 +1,3 @@
-// b)
-// Cuantos mayores de edad estan viudos.
-// c)
-// La cantidad de hombres que hay solteros o viudos.
-// d)
-// Cuantas personas de la tercera edad( mas de 60 años) , tienen mas de 38 de temperatura
-// e)
-// El promedio de edad entre los hombres solteros.
-
 function mostrar() {
   let siguientePasajero;
   let nombre;
@@ -15,26 +6,26 @@ function mostrar() {
   let cantidadMujeres;
   let cantidadHombres;
   let estadoCivil;
-  let soltero;
-  let casado;
-  let viudo;
-  let pasajeros = [];
-  let persona;
   let temperaturaCorporal;
-
-  // A mostrar:
-  let mayorTemperatura;
 
   siguientePasajero = "si";
   cantidadMujeres = 0;
   cantidadHombres = 0;
-  soltero = 0;
-  casado = 0;
-  viudo = 0;
+
+  // A mostrar:
+  let mayorTemperatura = 0;
+  let personaConMayorTemperatura;
+  let mayoresDeEdadViudos = 0;
+  let cantidadHombresSolterosYViudos = 0;
+  let mayoresDeEdadConMasTemperatura = 0;
+  let solteros = 0;
+  let edadSolteros = 0;
+  let promedioEdadSolteros = 0;
+
 
   do {
     nombre = prompt("Ingrese su nombre:");
-    edad = prompt("Ingrese su edad: ");
+    edad = prompt("Ingrese su edad:");
     edad = parseInt(edad);
 
     while (edad > 99 || edad < 1 || typeof edad !== "number") {
@@ -69,24 +60,6 @@ function mostrar() {
       estadoCivil = prompt("Ingrese su estadoCivil (soltero, casado o viudo)");
     }
 
-    switch (estadoCivil) {
-      case "soltero":
-        soltero = soltero + 1;
-        break;
-      case "casado":
-        casado = casado + 1;
-        break;
-      case "viudo":
-        viudo = viudo + 1;
-        break;
-      default:
-        alert("Inserte un estado civil válido: (soltero, casado o viudo)");
-        estadoCivil = prompt(
-          "Ingrese un estado civil válido: (soltero, casado o viudo)"
-        );
-        break;
-    }
-
     temperaturaCorporal = prompt(
       "Ingrese su temperatura corporal (Escriba un número, ej: 37)"
     );
@@ -97,12 +70,6 @@ function mostrar() {
       );
       temperaturaCorporal = parseInt(temperaturaCorporal);
     }
-
-    // Aqui defino a la persona:
-    persona = { nombre, edad, sexo, estadoCivil, temperaturaCorporal };
-    pasajeros.push(persona);
-    console.log(persona, "personaa");
-    console.log(pasajeros, "pasajerossss");
 
     siguientePasajero = prompt("Desea agregar otro pasajero/a? (si, no)");
     switch (siguientePasajero) {
@@ -115,11 +82,34 @@ function mostrar() {
         break;
     }
     // a) El nombre de la persona con más temperatura.
-    // for (let i = 0; i < pasajeros.length; i++) {
-    //   if (pasajeros[i].temperaturaCorporal > mayorTemperatura) {
-    //     mayorTemperatura = pasajeros[i].temperaturaCorporal;
-    //     console.log(mayorTemperatura, "Mayor temperatura");
-    //   }
-    // }
+    if (mayorTemperatura < temperaturaCorporal) {
+      mayorTemperatura = temperaturaCorporal;
+      personaConMayorTemperatura =
+        nombre +
+        " es la persona con más temperatura, teniendo " +
+        temperaturaCorporal +
+        " grados";
+    }
+    // b) Cuantos mayores de edad estan viudos.
+    if (edad > 17 && estadoCivil === "viudo") {
+      mayoresDeEdadViudos = mayoresDeEdadViudos + 1;
+    }
+    // c) La cantidad de hombres que hay solteros o viudos
+    if (
+      ((sexo === "m" || sexo === "M") && estadoCivil === "viudo") ||
+      estadoCivil === "soltero"
+    ) {
+      cantidadHombresSolterosYViudos = cantidadHombresSolterosYViudos + 1;
+    }
+    // d) Cuantas personas de la tercera edad( más de 60 años), tienen más de 38 de temperatura.
+    if (edad > 59 && temperaturaCorporal > 38) {
+      mayoresDeEdadConMasTemperatura = mayoresDeEdadConMasTemperatura + 1;
+    }
+    // e) El promedio de edad entre los hombres solteros.
+    if ((sexo === "m" || sexo === "M") && estadoCivil === "soltero") {
+      edadSolteros = edadSolteros + edad;
+      solteros = solteros + 1;
+      promedioEdadSolteros = edadSolteros / solteros;
+    }
   } while (siguientePasajero == "si");
 }
