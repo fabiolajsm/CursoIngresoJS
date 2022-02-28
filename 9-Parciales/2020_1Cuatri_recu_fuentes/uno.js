@@ -117,7 +117,7 @@ function mostrar() {
     count += 1;
   }
   document.write(
-    " a) Del más barato de los alcoholes, la cantidad de unidades es: " +
+    " a) Del más caro de los jabones, la cantidad de unidades es: " +
       cantidadJabonCaro +
       " y el fabricante es: " +
       fabricanteJabonCaro +
