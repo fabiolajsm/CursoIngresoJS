@@ -56,7 +56,7 @@ function mostrar() {
     cantidadDeUnidades = prompt(
       "Inserte la cantidad de unidades (hasta 1000 unidades):"
     );
-    while (cantidadDeUnidades < 0 || cantidadDeUnidades > 1000) {
+    while (cantidadDeUnidades < 1 || cantidadDeUnidades > 1000) {
       cantidadDeUnidades = prompt(
         "Inserte una cantidad de unidad válido (hasta 1000 unidades)"
       );
