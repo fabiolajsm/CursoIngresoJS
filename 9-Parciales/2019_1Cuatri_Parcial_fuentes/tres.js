@@ -9,7 +9,7 @@ function mostrar() {
   porcentajeDescuento = prompt(
     "Ingrese el porcentaje de descuento(en numeros enteros):"
   );
-  while (porcentajeDescuento < 0) {
+  while (porcentajeDescuento < 1) {
     porcentajeDescuento = prompt(
       "Ingrese el porcentaje de descuento(en numeros enteros):"
     );
