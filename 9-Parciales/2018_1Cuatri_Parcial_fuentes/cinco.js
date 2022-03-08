@@ -1,230 +1,128 @@
-// Fabiola Suárez - Ejercicio 1 (Exámen)
-// División K.
-// Se puede realizar en cualquier archivo de código fuente
-// 1- Una casa de computación que se especializa en venta de insumos importados desea calcular ciertas métricas en base a las ventas de sus productos.
+// 2- Nos ingresan una cantidad indeterminada de alumnos inscriptos en programación 1,
+// validando los datos ingresados:
 
-// Se ingresa de cada venta: (Ingresa mínimo 5 ventas)
-// -Nombre del producto.
-// -Género: (Memorias – Discos – Motherboards)
-// -Tipo de Venta: (Online – Local)
-// -Importe: (No pueden ser números negativos ni mayor a los 30000)
-// Se pide:
-// A- El más barato de “Discos” con su importe .
-// B- De la venta más cara, el nombre del producto y tipo.
-// C- La cantidad de ventas que sean de “Memorias” y cuesten menos de $850.
-function mostrat() {
-  let count;
-  let nombre;
-  let genero;
-  let tipo;
-  let importe;
+// División [A,B, C] ,nombre del alumno ,legajo [del 1 al 10000] , si es recursante o no y nota.
 
-  // A mostrar:
-  let barato;
-  let importeDelBarato;
-  let productoCaro;
-  let tipoCaro;
-  let cantidadMemorias;
+// Informar:
+// a)La división con más aspirantes.
+// b)el nombre recursante con mayor nota
+// c)el nombre del que No es recursante y tiene  la menor nota.
 
-  let precioDisco;
-  let precioMemoria;
-  let precioMotherboards;
-
-  count = 0;
-  importe = 0;
-  precioDisco = 0;
-  precioMemoria = 0;
-  precioMotherboards = 0;
-  cantidadMemorias = 0;
-
-  do {
-    nombre = prompt("Ingrese el nombre del producto:");
-    genero = prompt(
-      "Ingrese el género (solo válido para Memorias, Discos, Motherboards)"
-    );
-    while (
-      genero !== "Memorias" &&
-      genero !== "Discos" &&
-      genero !== "Motherboards"
-    ) {
-      genero = prompt(
-        "Error. Ingrese un género válido (solo Memorias, Discos, Motherboards)"
-      );
-    }
-
-    tipo = prompt(
-      "Ingrese el tipo de venta (solo contamos con Online y Local)"
-    );
-    while (tipo !== "Online" && tipo !== "Local") {
-      tipo = prompt("Error. Ingrese un tipo de venta válido (Online o Local)");
-    }
-
-    importe = prompt("Inserte un importe (no mayor a 30000)");
-    importe = parseInt(importe);
-    while (importe < 0 || importe > 30000) {
-      importe = prompt("Error. Inserte un importe válido (no mayor a 30000)");
-    }
-    importe = parseInt(importe);
-    // A- El más barato de “Discos” con su importe:
-    switch (genero) {
-      case "Discos":
-        barato = nombre;
-        importeDelBarato = precio;
-        precioDisco = precioDisco;
-        if (precio < importeDelBarato) {
-          barato = nombre;
-          importeDelBarato = precio;
-        }
-        break;
-      case "Memorias":
-        // C- La cantidad de ventas que sean de “Memorias” y cuesten menos de $850.
-        precioMemoria = precio;
-        if (precio < 850) {
-          cantidadMemorias += 1;
-        }
-        break;
-      case "Motherboards":
-        precioMotherboards = precio;
-        break;
-    }
-    // B- De la venta más cara, el nombre del producto y tipo.
-    if (precioDisco > precioMemoria && precioDisco > precioMotherboards) {
-      productoCaro = "Disco";
-      tipoCaro = tipo;
-    }
-    if (precioMemoria > precioDisco && precioMemoria > precioMotherboards) {
-      productoCaro = "Memoria";
-      tipoCaro = tipo;
-    }
-    if (
-      precioMotherboards > precioDisco &&
-      precioMotherboards > precioMemoria
-    ) {
-      productoCaro = "Motherboards";
-      tipoCaro = tipo;
-    }
-  } while (count < 6);
-
-  document.write(
-    " a) El más barato de “Discos” con su importe: " +
-      importeDelBarato +
-      "<br> b) De la venta más cara, el nombre del producto es : " +
-      productoCaro +
-      " y el tipo: " +
-      tipoCaro +
-      "<br> c) La cantidad de ventas de “Memorias” que cuestan menos de $850 es de: " +
-      cantidadMemorias
-  );
-}
-
-/// Como deberia ser:
-// 1- Una casa de computación que se especializa en venta de insumos importados desea calcular ciertas métricas en base a las ventas de sus productos.
-// Se ingresa de cada venta: (Ingresa mínimo 5 ventas)
-// -Nombre del producto.
-// -Género: (Memorias – Discos – Motherboards)
-// -Tipo de Venta: (Online – Local)
-// -Importe: (No pueden ser números negativos ni mayor a los 30000)
-// Se pide:
-// A- El más barato de “Discos” con su importe .
-// B- De la venta más cara, el nombre del producto y tipo.
-// C- La cantidad de ventas que sean de “Memorias” y cuesten menos de $850.
+// Pedir datos por prompt y mostrar por document.write o console.log
 
 function mostrar() {
-  let contador;
-  let nombreProducto;
-  let generoProducto;
-  let tipoVenta;
-  let importe;
+  let agregarAlumno;
+  let division;
+  let nombre;
+  let legajo;
+  let recursante;
+  let nota;
 
   // A
-  let nombreDiscoBarato;
-  let importeDiscoBarato;
-  let banderaDiscoBarato = true;
+  let divisionA;
+  let divisionB;
+  let divisionC;
+  let masAspirantes;
   // B
-  let nombreVentaMasCara;
-  let tipoVentaMasCara;
-  let importeVentaMasCara = 0;
-  let banderaVentaMasCara = true;
+  let recursanteMayorNota;
+  let banderaRecursante;
+  let nombreRecursante;
   // C
-  let cantidadMemorias;
-  cantidadMemorias = 0;
+  let menorNota;
+  let banderaMenorNota;
+  let alumnoMenorNota;
 
-  contador = 1;
+  agregarAlumno = true;
+  divisionA = 0;
+  divisionB = 0;
+  divisionC = 0;
+  banderaRecursante = true;
+  banderaMenorNota = true;
 
-  while (contador < 6) {
+  while (agregarAlumno === true) {
     do {
-      nombreProducto = prompt("Ingrese el nombre del producto: ");
-    } while (nombreProducto === "");
+      nombre = prompt("Ingrese el nombre del alumno/a: ");
+    } while (nombre === "");
     do {
-      generoProducto = prompt(
-        "Ingrese el genero del producto (solo válido para Memorias, Discos, Motherboards): "
-      );
-    } while (
-      generoProducto !== "Memorias" &&
-      generoProducto !== "Discos" &&
-      generoProducto !== "Motherboards"
-    );
+      division = prompt("Ingrese la división (A, B o C):");
+    } while (division !== "A" && division !== "B" && division !== "C");
     do {
-      tipoVenta = prompt("Ingrese el tipo de venta (Online o Local): ");
-    } while (tipoVenta !== "Online" && tipoVenta !== "Local");
+      legajo = prompt("Ingrese su legajo (del 1 al 10000):");
+      legajo = parseInt(legajo);
+    } while (isNaN(legajo) || legajo < 1 || legajo > 10000);
     do {
-      importe = prompt("Ingrese el importe: ");
-      importe = parseInt(importe);
-    } while (isNaN(importe) || importe < 0 || importe > 30000);
+      recursante = prompt("Es recursante? (si o no)");
+    } while (recursante !== "si" && recursante !== "no");
+    do {
+      nota = prompt("Ingrese su nota: ");
+      nota = parseInt(nota);
+    } while (isNaN(nota) || nota < 1 || nota > 10);
 
-    // A- El más barato de “Discos” con su importe:
-    switch (generoProducto) {
-      case "Discos":
-        if (banderaDiscoBarato === true) {
-          nombreDiscoBarato = nombreProducto;
-          importeDiscoBarato = importe;
-          banderaDiscoBarato = false;
+    // a) La división con más aspirantes.
+    switch (division) {
+      case "A":
+        divisionA += 1;
+        break;
+      case "B":
+        divisionB += 1;
+        break;
+      case "C":
+        divisionC += 1;
+        break;
+    }
+
+    if (divisionA > divisionB && divisionA > divisionC) {
+      masAspirantes = "División A";
+    }
+    if (divisionB > divisionA && divisionB > divisionC) {
+      masAspirantes = "División B";
+    }
+    if (divisionC > divisionA && divisionC > divisionB) {
+      masAspirantes = "División C";
+    }
+    // b) El nombre recursante con mayor nota.
+    switch (recursante) {
+      case "si":
+        if (banderaRecursante === true) {
+          nombreRecursante = nombre;
+          recursanteMayorNota = nota;
+          banderaRecursante = false;
         }
-        if (importe < importeDiscoBarato) {
-          nombreDiscoBarato = nombreProducto;
-          importeDiscoBarato = importe;
+        if (nota > recursanteMayorNota) {
+          nombreRecursante = nombre;
+          recursanteMayorNota = nota;
         }
         break;
-      case "Memorias":
-        // C- La cantidad de ventas que sean de “Memorias” y cuesten menos de $850.
-        if (importe < 850) {
-          cantidadMemorias += 1;
+      // c) El nombre del que No es recursante y tiene la menor nota.
+      case "no":
+        if (banderaMenorNota === true) {
+          alumnoMenorNota = nombre;
+          menorNota = nota;
+          banderaMenorNota = false;
+        }
+        if (nota < menorNota) {
+          alumnoMenorNota = nombre;
+          menorNota = nota;
         }
         break;
     }
 
-    // B- De la venta más cara, el nombre del producto y tipo.
-    if (banderaVentaMasCara === true) {
-      nombreVentaMasCara = nombreProducto;
-      tipoVentaMasCara = generoProducto;
-      importeVentaMasCara = importe;
-      banderaVentaMasCara = false;
-    } else {
-      if (importe > importeVentaMasCara) {
-        nombreVentaMasCara = nombreProducto;
-        tipoVentaMasCara = generoProducto;
-        importeVentaMasCara = importe;
-      }
-    }
-    contador++;
-    if (contador === 6) {
-      do {
-        continuarAgregando = prompt("Desea agregar otra venta? (si, no)");
-      } while (continuarAgregando !== "no" && continuarAgregando !== "si");
-      switch (continuarAgregando) {
-        case "si":
-          contador = 5;
-          break;
-        default:
-          break;
-      }
+    do {
+      agregarAlumno = prompt("Desea agregar otra alumno? (si, no)");
+    } while (agregarAlumno !== "no" && agregarAlumno !== "si");
+    switch (agregarAlumno) {
+      case "si":
+        agregarAlumno = true;
+        break;
+      case "no":
+        agregarAlumno = false;
+        break;
     }
   }
-
   document.write(
-    ` A- El más barato de “Discos” es ${nombreDiscoBarato} y su importe es ${importeDiscoBarato}. <br>
-      B- De la venta más cara, el nombre del producto es ${nombreVentaMasCara} y el tipo es ${tipoVentaMasCara}. <br>
-      C- La cantidad de ventas de “Memorias” que cuestan menos de $850 es: ${cantidadMemorias}.
+    ` A- La división con más aspirantes es la ${masAspirantes}. <br>
+      B- El nombre recursante con mayor nota es: ${nombreRecursante}. <br>
+      C- El nombre del que No es recursante y tiene la menor nota es: ${alumnoMenorNota}.
     `
   );
 }
