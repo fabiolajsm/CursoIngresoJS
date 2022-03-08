@@ -1,17 +1,6 @@
 // Fabiola Suárez - Ejercicio 3 (Exámen)
 // División K.
 
-// 3- De 5 personas que suben a un avión necesitamos tomar y validar los siguientes datos:
-
-// nombre , asiento [1 al 100],importe del pasaje de 0 a 300000, sexo [m,f o nb] y edad [1 a 100].
-
-// a)Informar el último asiento ingresado con el nombre  y su importe.
-// b)La edad promedio de las mujeres.
-// c)el maximo importe ingresado por un pasaje de un pasajero sexo nb.
-// d)el minimo importe ingresado por un pasaje de un pasajero sexo f.
-
-// Pedir datos por prompt y mostrar por document.write o console.log
-
 function mostrar() {
   let count;
   count = 1;
@@ -103,5 +92,111 @@ function mostrar() {
       maximoImporteNb +
       "<br> d) El minimo importe ingresado por un pasaje de un pasajero del sexo f es: " +
       minimoImporteF
+  );
+}
+
+// Como deberia ser :
+// 3- De 5 personas que suben a un avión necesitamos tomar y validar los siguientes datos:
+// nombre , asiento [1 al 100],importe del pasaje de 0 a 300000, sexo [m,f o nb] y edad [1 a 100].
+
+// a)Informar el último asiento ingresado con el nombre  y su importe.
+// b)La edad promedio de las mujeres.
+// c)el maximo importe ingresado por un pasaje de un pasajero sexo nb.
+// d)el minimo importe ingresado por un pasaje de un pasajero sexo f.
+
+// Pedir datos por prompt y mostrar por document.write o console.log
+
+function mostrar() {
+  let contador;
+  let nombre;
+  let asiento;
+  let importePasaje;
+  let sexo;
+  let edad;
+
+  // A
+  let nombreUltimoAsiento;
+  let importeUltimoAsiento;
+  // B
+  let cantidadMujeres = 0;
+  let edadMujeres = 0;
+  let promedioEdadMujeres = 0;
+  // C
+  let banderaMaximoImporteNB = true;
+  let importeMaximoNB = 0;
+  // D
+  let banderaMinimoImporteF = true;
+  let minimoImporteF = 0;
+
+  contador = 1;
+  importePasaje = 0;
+  importeUltimoAsiento = 0;
+
+  while (contador < 6) {
+    do {
+      nombre = prompt("Ingrese su nombre: ");
+    } while (nombre === "");
+
+    do {
+      asiento = prompt("Ingrese su asiento: ");
+      asiento = parseInt(asiento);
+    } while (isNaN(asiento) || asiento < 1 || asiento > 100);
+
+    do {
+      importePasaje = prompt("Ingrese el importe de su pasaje: ");
+      importePasaje = parseInt(importePasaje);
+    } while (
+      isNaN(importePasaje) ||
+      importePasaje < 0 ||
+      importePasaje > 300000
+    );
+
+    do {
+      sexo = prompt("Ingrese su sexo (f , m o nb):");
+    } while (sexo !== "f" && sexo !== "m" && sexo !== "nb");
+
+    do {
+      edad = prompt("Ingrese su edad: ");
+      edad = parseInt(edad);
+    } while (isNaN(edad) || edad < 1 || edad > 100);
+    // a) Informar el último asiento ingresado con el nombre  y su importe.
+    nombreUltimoAsiento = nombre;
+    importeUltimoAsiento = importePasaje;
+
+    switch (sexo) {
+      case "f":
+        cantidadMujeres += 1;
+        edadMujeres = edadMujeres + edad;
+        // d) El minimo importe ingresado por un pasaje de un pasajero sexo f.
+        if (banderaMinimoImporteF === true) {
+          minimoImporteF = importePasaje;
+          banderaMinimoImporteF = false;
+        }
+        if (importePasaje < minimoImporteF) {
+          minimoImporteF = importePasaje;
+        }
+        break;
+      case "nb":
+        // c) El maximo importe ingresado por un pasaje de un pasajero sexo nb.
+        if (banderaMaximoImporteNB === true) {
+          importeMaximoNB = importePasaje;
+          banderaMaximoImporteNB = false;
+        }
+        if (importePasaje > importeMaximoNB) {
+          importeMaximoNB = importePasaje;
+        }
+        break;
+    }
+
+    // b) La edad promedio de las mujeres.
+    promedioEdadMujeres = edadMujeres / cantidadMujeres;
+    contador++;
+  }
+  document.write(
+    ` A- El último asiento ingresado fue el de ${nombreUltimoAsiento} y su importe fue ${importeUltimoAsiento}. <br>
+      B- La edad promedio de las mujeres es: ${promedioEdadMujeres}. <br>
+      C- El maximo importe ingresado por un pasaje de un pasajero del sexo nb fue de $${importeMaximoNB}. <br>
+      D- El minimo importe ingresado por un pasaje de un pasajero del sexo femenino fue de: $${minimoImporteF}
+    `
   );
 }
