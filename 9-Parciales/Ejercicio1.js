@@ -131,7 +131,6 @@ function mostrat() {
 
 function mostrar() {
   let contador;
-  // let continuarAgregando;
   let nombreProducto;
   let generoProducto;
   let tipoVenta;
@@ -151,10 +150,8 @@ function mostrar() {
   cantidadMemorias = 0;
 
   contador = 1;
-  // continuarAgregando = false;
 
   while (contador < 6) {
-    // || continuarAgregando === true
     do {
       nombreProducto = prompt("Ingrese el nombre del producto: ");
     } while (nombreProducto === "");
@@ -210,22 +207,19 @@ function mostrar() {
       }
     }
     contador++;
-    continuarAgregando = false;
+    if (contador === 6) {
+      do {
+        continuarAgregando = prompt("Desea agregar otra venta? (si, no)");
+      } while (continuarAgregando !== "no" && continuarAgregando !== "si");
+      switch (continuarAgregando) {
+        case "si":
+          contador = 5;
+          break;
+        default:
+          break;
+      }
+    }
   }
-
-  // if (contador === 6) {
-  //   do {
-  //     continuarAgregando = prompt("Desea agregar otra venta? (si, no)");
-  //   } while (continuarAgregando !== "no" && continuarAgregando !== "si");
-  //   switch (continuarAgregando) {
-  //     case "no":
-  //       continuarAgregando = false;
-  //       break;
-  //     default:
-  //       continuarAgregando = true;
-  //       break;
-  //   }
-  // }
 
   document.write(
     ` A- El más barato de “Discos” es ${nombreDiscoBarato} y su importe es ${importeDiscoBarato}. <br>
